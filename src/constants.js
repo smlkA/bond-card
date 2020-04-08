@@ -22,3 +22,5 @@ export const daysInPeriod = {
   Quarter: 90,
   Year: 365,
 };
+
+export const AXIS_DATE_FORMAT = "MM/dd";

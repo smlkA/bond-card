@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import { BondDetails } from "./BondDetails";
-import { Periods } from "../../utils";
+import { Periods } from "../../constants";
 
 const commonProps = {
   isin: "1",

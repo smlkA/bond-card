@@ -1,36 +1,53 @@
 import { createSelector } from "reselect";
 import { format } from "date-fns";
-import { daysInPeriod } from "../utils";
+import { daysInPeriod, AXIS_DATE_FORMAT } from "../constants";
 
-export const getBondInfo = (state) => state.bondInfo;
+export const getBondPageState = (state) => state.bondPage;
 
-export const getLoadingState = (state) => state.reducerState;
-
-export const getChartPeriod = (state) => state.period;
-
-export const getChartYAxis = (state) => state.yAxis;
-
-export const getBondName = createSelector(getBondInfo, (bond) =>
-  bond ? bond.name : ""
+export const getBondInfo = createSelector(
+  getBondPageState,
+  (bondPage) => bondPage.bondInfo
 );
 
-export const getBondIsin = createSelector(getBondInfo, (bond) =>
-  bond ? bond.isin : ""
+export const getLoadingState = createSelector(
+  getBondPageState,
+  (bondPage) => bondPage.reducerState
 );
 
-export const getBondDescription = createSelector(getBondInfo, (bond) =>
-  bond ? `${bond.company}, ${bond.domain}` : ""
+export const getChartPeriod = createSelector(
+  getBondPageState,
+  (bondPage) => bondPage.period
+);
+
+export const getChartYAxis = createSelector(
+  getBondPageState,
+  (bondPage) => bondPage.yAxis
+);
+
+export const getBondName = createSelector(
+  getBondInfo,
+  (bondInfo) => bondInfo.name
+);
+
+export const getBondIsin = createSelector(
+  getBondInfo,
+  (bondInfo) => bondInfo.isin
+);
+
+export const getBondDescription = createSelector(
+  getBondInfo,
+  (bondInfo) => `${bondInfo.company}, ${bondInfo.domain}`
 );
 
 export const getBondData = createSelector(
   getBondInfo,
   getChartPeriod,
-  (bond, period) => {
+  (bondInfo, period) => {
     const days = daysInPeriod[period];
-    return bond
-      ? bond.data.slice(-1 * days).map((elem) => ({
+    return bondInfo.data.length > 0
+      ? bondInfo.data.slice(-1 * days).map((elem) => ({
           ...elem,
-          date: format(new Date(elem.date), "MM/dd"),
+          date: format(new Date(elem.date), AXIS_DATE_FORMAT),
         }))
       : [];
   }

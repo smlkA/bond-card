@@ -1,4 +1,4 @@
-import { daysInPeriod } from "./constants";
+import { daysInPeriod } from "../constants";
 const msInDay = 24 * 60 * 60 * 1000;
 
 function randomNumber(min, max) {

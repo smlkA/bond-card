@@ -1,5 +1,5 @@
 import { getRandomData } from "../randomData";
-import { Periods } from "../../utils";
+import { Periods } from "../../constants";
 
 export default {
   async fetchBond(isin, period = Periods.Year) {

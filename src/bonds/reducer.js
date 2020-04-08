@@ -1,8 +1,16 @@
 import { BondActions } from "./action-names";
-import { ReducerStates } from "../utils";
+import { ReducerStates } from "../constants";
 
 const getDefaultState = () => ({
-  bondInfo: null,
+  bondInfo: {
+    isin: "",
+    name: "",
+    company: "",
+    domain: "",
+    amount: "",
+    currency: "",
+    data: [],
+  },
   reducerState: ReducerStates.Regular,
   serverError: null,
   yAxis: "price",

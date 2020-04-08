@@ -13,7 +13,7 @@ import {
   getChartPeriod,
   getChartYAxis,
 } from "../selector";
-import { ReducerStates, Periods } from "../../utils";
+import { ReducerStates, Periods } from "../../constants";
 
 const { Title, Paragraph } = Typography;
 const { Option } = Select;

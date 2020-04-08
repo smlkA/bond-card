@@ -1,5 +1,5 @@
 import { getRandomData } from "./randomData";
-import { Periods } from "./constants";
+import { Periods } from "../constants";
 
 describe("generateResponse", () => {
   it("should returns value for a week", () => {
